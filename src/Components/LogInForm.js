@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./LogIn.css";
 
 export default function LoginForm({ onLogin }) {
-    const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,7 +50,7 @@ export default function LoginForm({ onLogin }) {
         {errors.map((err) => (
           <p key={err}>{err}</p>
         ))}
-         <span id="login-section"> Have an account already? Login</span>
+
     </form>
   );
 }

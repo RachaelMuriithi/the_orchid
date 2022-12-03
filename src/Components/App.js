@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // import ReactDOM from'react-dom';
 // import './App.css';
-import SignUp from "./SignUp/Signupform";
-import LoginForm from "./LogIn/Login";
-import Login from './LogIn/loginform';
-
+// import SignUp from "./SignUp/Signupform";
+import Login from './TheLog';
+import { useEffect, useState } from 'react';
 
 
 function App() {
   const [user, setUser] = useState(null);
+  
   useEffect(() => {
     // auto-login
     fetch("/me").then((r) => {
@@ -17,12 +17,11 @@ function App() {
       }
     });
   }, []);
-
-  if (!user) return <Login onLogin={setUser} />;
+  if (!user) return <Login onLogin={setUser}/>;
+  
   return (
     <div className="App">
-     <SignUp/>
-      <LoginForm/>
+      <Login/> 
     </div>
   );
 }

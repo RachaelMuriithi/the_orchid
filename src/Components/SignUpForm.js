@@ -3,7 +3,6 @@ import "./SignUp.css";
 import React, { useState } from "react";
 
 
-
 function SignUp({ onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,6 +11,7 @@ function SignUp({ onLogin }) {
   const [bio, setBio] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
 
   function handleSubmit(e) {
     e.preventDefault();
