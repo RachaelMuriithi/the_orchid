@@ -1,7 +1,4 @@
 import React from "react";
-// import ReactDOM from'react-dom';
-// import './App.css';
-// import SignUp from "./SignUp/Signupform";
 import Login from './TheLog';
 import { useEffect, useState } from 'react';
 

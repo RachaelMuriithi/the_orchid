@@ -1,16 +1,19 @@
 import { useState } from "react";
-import SignUp from './SignUpForm';
-import LoginForm from './LogInForm';
+import SignUp from "./SignUpForm";
+import LoginForm from "./LogInForm";
+import "./TheLog.css";
 
 function Login({ onLogin }) {
-const [showLogin, setShowLogin] = useState(true);
-    return (
-      <div>
+  const [showLogin, setShowLogin] = useState(true);
+  return (
+    <div className="landingpage">
+      <div className="signups">
+      <h2><span>T</span>heOrchid</h2>
         {showLogin ? (
           <>
             <LoginForm onLogin={onLogin} />
             <div />
-            <p>
+            <p id="para">
               Don't have an account? &nbsp;
               <button color="secondary" onClick={() => setShowLogin(false)}>
                 Sign Up
@@ -29,7 +32,8 @@ const [showLogin, setShowLogin] = useState(true);
             </p>
           </>
         )}
-        </div>
-    );
-  }
-  export default Login;
+      </div>
+    </div>
+  );
+}
+export default Login;

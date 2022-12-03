@@ -1,7 +1,5 @@
 
-import "./SignUp.css";
 import React, { useState } from "react";
-
 
 function SignUp({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -13,7 +11,8 @@ function SignUp({ onLogin }) {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  function handleSubmit(e) {
+
+  function handleSubmit(e, {setShowLogin}) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
@@ -39,7 +38,8 @@ function SignUp({ onLogin }) {
     });
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="mainpage" onSubmit={handleSubmit}>
+      <div className= "signup" >
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -79,10 +79,12 @@ function SignUp({ onLogin }) {
           onChange={(e) => setBio(e.target.value)}
         />
         <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-        {errors.map((err) => (
+      <div>
+         {errors.map((err) => (
           <p key={err}>{err}</p>
         ))}
-         <span id="signup-section"> Don't have an account? SignUp</span>
+        </div>
+       </div>
     </form>
   );
 }
