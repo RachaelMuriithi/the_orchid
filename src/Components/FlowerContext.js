@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const FlowerContext = createContext();
+const RestaurantContext = createContext();
 
 function FlowerProvider({ children }) {
   const navigate = useNavigate();
@@ -12,12 +12,14 @@ function FlowerProvider({ children }) {
   const [flower, setFlower] = useState({});
   const [flowerError, setFlowerError] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [reviewsError, setReviewsError] = useState([]);
+
   useEffect(() => {
     const payload = async () => {
       setLoading(true);
       const response = await fetch("/flowers");
 
-      const flowers = await response.json();
+      const restaurants = await response.json();
       if (response.ok) {
         setFlowers(flowers);
         setLoading(false);
@@ -34,38 +36,85 @@ function FlowerProvider({ children }) {
     const payload = async () => {
       setLoading(true);
       const response = await fetch(`/flowers/${flowerId}`);
-      const flower = await response.json();
+      const restaurant = await response.json();
       if (response.ok) {
-        localStorage.setItem("flower", JSON.stringify(flower));
+        localStorage.setItem("flowers", JSON.stringify(flower));
         setFlower(flower);
         setLoading(false);
       } else {
         setFlowerError(flower.errors);
       }
     };
+
     payload();
+    // const localRestaurantJson = localStorage.getItem("restaurant");
+    // const localRestaurant = localRestaurantJson
+    //   ? JSON.parse(localRestaurantJson)
+    //   : [];
+
+    // setFoods(localFood);
   }, [flowerId]);
 
   useEffect(() => {
+    const data = localStorage.getItem("flower");
+    if (data) {
+      setFlower(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
     const payload = async () => {
-      const response = await fetch(`/reviews/`);
+      const response = await fetch(`/flowers/${flowerId}/reviews`);
 
       const reviews = await response.json();
       if (response.ok) {
-       setReviews(reviews);
+        setReviews(reviews);
+      } else {
+        setReviewsError(reviews.errors);
       }
     };
 
     payload();
   }, [flowerId]);
 
-  // const localRestaurantJson = localStorage.getItem("restaurant");
-  // const localRestaurant = localRestaurantJson
-  //   ? JSON.parse(localRestaurantJson)
-  //   : [];
+  // Create functionality for adding a new review
+  const [newReview, setNewReview] = useState({
+    star_rating: "",
+    comment: "",
+  });
 
-  function handleFlower(flower) {
-    setFlowerId(flower.id);
+  const [reviewError, setReviewError] = useState([]);
+
+  function handleReviewChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    setNewReview({ ...newReview, [name]: value });
+  }
+
+  async function handleSubmitReview(event) {
+    event.preventDefault();
+
+    const response = await fetch(`/flowers/${rflowerId}/reviews`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newReview),
+    });
+
+    const review = await response.json();
+    if (response.ok) {
+      setReviews([...reviews, review]);
+      setNewReview({
+        star_rating: "",
+        comment: "",
+      });
+    } else {
+      setReviewError(review.errors);
+    }
+  }
+
+  // end of functionality
+  function handleFlower(restaurant) {
+    setFlowerId((prevstate) => (prevstate = flower.id));
     navigate(`/flowers/${flower.id}`);
   }
 
@@ -159,27 +208,48 @@ function FlowerProvider({ children }) {
     }
   }
   // End of Login functionality
+  const [trigger, setTrigger] = useState(false);
+
+  function handleAddReview() {
+    setTrigger(true);
+  }
 
   const values = {
     loading,
     flowersError,
     flowers,
     flower,
-    flowerError,
+    rflowerError,
     handleFlower,
+
     // State and functions for login
     handleLoginChange,
     handleSubmitLoginDetails,
     loginError,
     loginData,
     isLoading,
+
     // State and functions for sign up
     handleSignupChange,
     handleSubmitSignupDetails,
     signupData,
     signupError,
     signupLoading,
+
+    //Add functionality for getting and setting reviews
+    reviews,
+    reviewsError,
+
+    //Add functionality for getting and setting book
+    trigger,
+    setTrigger,
+    handleAddReview,
+
+    newReview,
+    handleReviewChange,
+    handleSubmitReview,
   };
+
   return (
     <FlowerContext.Provider value={values}>
       {children}

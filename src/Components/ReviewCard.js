@@ -1,11 +1,13 @@
 import React from "react";
 // import "./Review.css";
-function ReviewCard({ reviewTitle, reviewComment, reviewUser }) {
-  console.log(reviewUser);
+function ReviewCard({  reviewStarRating, reviewComment, reviewUser }) {
   return (
     <div className="review-card">
-      <h4>{reviewUser.username}</h4>
-      <h3> {reviewTitle}</h3>
+      <div className="reviewer-info">
+        <h4>{reviewUser.username}</h4>
+        <img src={reviewUser.image_url} alt={reviewUser.username} />
+      </div>
+      <p>{reviewStarRating}</p>
       <p>{reviewComment}</p>
     </div>
   );

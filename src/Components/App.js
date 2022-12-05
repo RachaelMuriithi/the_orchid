@@ -7,7 +7,8 @@ import FlowerContainer from "./FlowerContainer";
 import { FlowerProvider } from "./FlowerContext";
 // import FlowerPage from "./FlowerPage";
 import SignUp from "./SignUpForm";
-import ReviewContainer from "./ReviewContainer";
+import FlowerPage from "./FlowerPage";
+
 
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
           <Route path="/flowers" element={<FlowerContainer />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/reviews" element={<ReviewContainer />} />
+          <Route path="/flowers/:id" element={<FlowerPage />} />
         </Routes>
       </FlowerProvider>
       <Footer />

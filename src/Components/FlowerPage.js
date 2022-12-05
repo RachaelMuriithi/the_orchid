@@ -1,23 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FlowerContext } from "./FlowerContext";
+import ReviewContainer from "./ReviewContainer";
+import ReviewForm from "./ReviewForm";
 // import "./FlowerPage.css";
 
-
 export default function FlowerPage() {
-  const { flower, flowerError } = useContext(FlowerContext);
-
-
-
+  const { flowers, flowerError, trigger } = useContext(FlowerContext);
+  
   return (
     <>
       {flowerError.length > 0
-        ? flowerError.map((error) => <span className="error">{error}</span>)
+        ? flowerError.map((error, index) => (
+            <span key={index} className="error">
+              {error}
+            </span>
+          ))
         : null}
       <div className="flower-page">
         <div className="flower-info">
-          <img src={flower.image_url} alt={flower.name} />
-          <h2> {flower.name} </h2> <p> {flower.description} </p>
+          <img src={flowers.image_url} alt={flowers.name} />
+          <h2> {flowers.name} </h2> <p> {flowers.description} </p>
         </div>
+        <ReviewContainer  />
+        {trigger ? <ReviewForm /> : null}
       </div>
     </>
   );

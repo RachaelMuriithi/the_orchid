@@ -16,10 +16,8 @@ function FlowerCard({
       <div className="flower-img">
         <img src={flowerImage} alt={flowerName} />
       </div>
-      <div className="theorchid-info">
-        <h3 onClick={() => handleFlower(flower)}>
-          {flowerName}
-        </h3>
+      <div className="orchid-info">
+        <h3 onClick={() => handleFlower(flower)}>{flowerName}</h3>
         <p>{flowerDescription}</p>
       </div>
     </div>

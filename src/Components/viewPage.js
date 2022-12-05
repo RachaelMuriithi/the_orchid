@@ -11,7 +11,6 @@ export default function ViewPage() {
         </h1>
         <img id = "img1" src="https://i.pinimg.com/564x/1b/b3/66/1bb3667a4c418596a91ef4485e2efb60.jpg" alt="flower"/>
         <img id = "img2" src="https://i.pinimg.com/564x/1b/b3/66/1bb3667a4c418596a91ef4485e2efb60.jpg" alt="flower"/>
-        <h3 id="h3">Your dedicated flowers museum</h3>
         <p className="learn">
         Learn about flowers in our online museum and  garden. See the beautiful diversity of flowers and understand how important they are in our ecosystem.
         </p>

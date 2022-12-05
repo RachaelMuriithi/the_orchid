@@ -1,20 +1,29 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { FlowerContext } from "./FlowerContext";
 import ReviewCard from "./ReviewCard";
 // import "./Review.css";
 
 function ReviewContainer() {
-  const { reviews } = useContext(FlowerContext);
+  const { review, handleAddReview } = useContext(FlowerContext);
 
-  const reviewList = reviews.map((review) => (
+  const reviewList = review.map((review) => (
     <ReviewCard
       key={review.id}
-      reviewTitle={review.title}
+      reviewStarRating={review.star_rating}
       reviewComment={review.comment}
       reviewUser={review.user}
     />
   ));
-  return <div className="review-container">{reviewList}</div>;
+  return (
+    <div className="review-container">
+      <h3>Reviews</h3>
+      <button className="review-btn" onClick={handleAddReview}>
+        Add Review
+      </button>
+
+      {reviewList.length > 0 ? reviewList : <h4>No reviews</h4>}
+    </div>
+  );
 }
 
 export default ReviewContainer;
