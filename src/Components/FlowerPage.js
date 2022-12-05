@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { FlowerContext } from "./FlowerContext";
 // import "./FlowerPage.css";
 
+
 export default function FlowerPage() {
   const { flower, flowerError } = useContext(FlowerContext);
 

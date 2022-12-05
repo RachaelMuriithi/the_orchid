@@ -48,7 +48,7 @@ function FlowerProvider({ children }) {
 
   useEffect(() => {
     const payload = async () => {
-      const response = await fetch(`/flowers/${flowerId}`);
+      const response = await fetch(`/reviews/`);
 
       const reviews = await response.json();
       if (response.ok) {
