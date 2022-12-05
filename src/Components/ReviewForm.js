@@ -7,11 +7,11 @@ function ReviewForm() {
   return (
     <div className="popup">
       <form id="review-form">
-        <label htmlFor="title">Title</label>
+        <label htmlFor="rating">Star Rating</label>
         <br />
-        <input type="text" name="title" />
+        <input type="integer" name="star_rating" />
         <br />
-        <label htmlFor="comment">Description</label>
+        <label htmlFor="comment">Comment</label>
         <br />
         <textarea cols="50" rows="4" className="text-area"></textarea>
         <br />

@@ -5,9 +5,9 @@ import ViewPage from "./viewPage";
 import LoginForm from "./LogInForm";
 import FlowerContainer from "./FlowerContainer";
 import { FlowerProvider } from "./FlowerContext";
-// import FlowerPage from "./FlowerPage";
 import SignUp from "./SignUpForm";
 import FlowerPage from "./FlowerPage";
+import ReviewContainer from "./ReviewContainer";
 
 
 
@@ -31,11 +31,15 @@ function App() {
       <FlowerProvider>
       <Header />
         <Routes>
-          <Route path="/" element={<ViewPage/>}/>
+          <Route path="/" element={ <ViewPage/>}/>
           <Route path="/flowers" element={<FlowerContainer />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/flowers/:id" element={<FlowerPage />} />
+          <Route
+            path="/flowers/:id"
+            element={<ReviewContainer />}
+          />
         </Routes>
       </FlowerProvider>
       <Footer />

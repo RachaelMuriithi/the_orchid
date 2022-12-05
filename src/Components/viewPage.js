@@ -1,5 +1,6 @@
 import React from "react";
 import "./ViewPage.css";
+import FlowerContainer from "./FlowerContainer";
 
 export default function ViewPage() {
   return (

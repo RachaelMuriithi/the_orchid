@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const RestaurantContext = createContext();
+const FlowerContext = createContext();
 
 function FlowerProvider({ children }) {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function FlowerProvider({ children }) {
       setLoading(true);
       const response = await fetch("/flowers");
 
-      const restaurants = await response.json();
+      const flowers = await response.json();
       if (response.ok) {
         setFlowers(flowers);
         setLoading(false);
@@ -36,7 +36,7 @@ function FlowerProvider({ children }) {
     const payload = async () => {
       setLoading(true);
       const response = await fetch(`/flowers/${flowerId}`);
-      const restaurant = await response.json();
+      const flower = await response.json();
       if (response.ok) {
         localStorage.setItem("flowers", JSON.stringify(flower));
         setFlower(flower);
@@ -47,12 +47,6 @@ function FlowerProvider({ children }) {
     };
 
     payload();
-    // const localRestaurantJson = localStorage.getItem("restaurant");
-    // const localRestaurant = localRestaurantJson
-    //   ? JSON.parse(localRestaurantJson)
-    //   : [];
-
-    // setFoods(localFood);
   }, [flowerId]);
 
   useEffect(() => {
@@ -94,7 +88,7 @@ function FlowerProvider({ children }) {
   async function handleSubmitReview(event) {
     event.preventDefault();
 
-    const response = await fetch(`/flowers/${rflowerId}/reviews`, {
+    const response = await fetch(`/flowers/${flowerId}/reviews`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newReview),
@@ -113,7 +107,7 @@ function FlowerProvider({ children }) {
   }
 
   // end of functionality
-  function handleFlower(restaurant) {
+  function handleFlower(flower) {
     setFlowerId((prevstate) => (prevstate = flower.id));
     navigate(`/flowers/${flower.id}`);
   }
@@ -208,6 +202,15 @@ function FlowerProvider({ children }) {
     }
   }
   // End of Login functionality
+   // Logout functionality
+   function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
+  //end of logout functionality
   const [trigger, setTrigger] = useState(false);
 
   function handleAddReview() {
@@ -219,10 +222,11 @@ function FlowerProvider({ children }) {
     flowersError,
     flowers,
     flower,
-    rflowerError,
+    flowerError,
     handleFlower,
 
     // State and functions for login
+    handleLogoutClick,
     handleLoginChange,
     handleSubmitLoginDetails,
     loginError,
@@ -240,7 +244,7 @@ function FlowerProvider({ children }) {
     reviews,
     reviewsError,
 
-    //Add functionality for getting and setting book
+  
     trigger,
     setTrigger,
     handleAddReview,

@@ -4,9 +4,9 @@ import ReviewCard from "./ReviewCard";
 // import "./Review.css";
 
 function ReviewContainer() {
-  const { review, handleAddReview } = useContext(FlowerContext);
+  const { reviews, handleAddReview } = useContext(FlowerContext);
 
-  const reviewList = review.map((review) => (
+  const reviewList = reviews.map((review) => (
     <ReviewCard
       key={review.id}
       reviewStarRating={review.star_rating}
