@@ -1,52 +1,58 @@
 input#username {
   width: 560px;
-  height: 80px;
-  margin-top: 50px;
+  height: 50px;
+  margin-top: 250px;
   background: #d9d9d9;
-  margin-right: 400px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 10px;
+  margin-right: 200px;
 }
 input#password {
   width: 560px;
-  height: 80px;
-  margin-top: 60px;
+  height: 50px;
   background: #d9d9d9;
-  margin-right: 400px;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 10px;
+  margin-top: 30px;
 }
 #user {
+  margin-left: 350px;
   width: 184px;
   height: 45px;
-  margin-left: 320px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 45px;
   color: whitesmoke;
   margin-right: 20px;
 }
 #pass {
+  margin-left: 350px;
   width: 184px;
   height: 45px;
-  margin-left: 340px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 45px;
   color: whitesmoke;
-  margin-right: 20px;
+  margin-right: 25px;
+  margin-top: 30px;
 }
 #theebutton {
   margin-top: 50px;
-  width: 150px;
+  width: 100px;
   height: 51px;
-  margin-left: 720px;
+  margin-left: 500px;
   background: #d9d9d9;
   border-radius: 10px;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 45px;
   color: #000000;
 }

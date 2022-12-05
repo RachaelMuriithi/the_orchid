@@ -27,7 +27,7 @@ export default function LoginForm({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className = "formation" onSubmit={handleSubmit}>
         <label id="user" htmlFor="username">Username:</label>
         <input
           type="text"
@@ -36,6 +36,7 @@ export default function LoginForm({ onLogin }) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <br /> <br /> 
         <label id="pass" htmlFor="password">Password:</label>
         <input
           type="password"
@@ -44,6 +45,7 @@ export default function LoginForm({ onLogin }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+         <br /> <br /> 
         <button id="theebutton" variant="fill" color="primary" type="submit">
           {isLoading ? "Loading..." : "Login"}
         </button>

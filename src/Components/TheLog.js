@@ -7,8 +7,8 @@ function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
   return (
     <div className="landingpage">
-      <div className="signups">
-      <h2><span>T</span>heOrchid</h2>
+      <span className="signups">
+       <h2><span>T</span>heOrchid</h2>
         {showLogin ? (
           <>
             <LoginForm onLogin={onLogin} />
@@ -32,7 +32,7 @@ function Login({ onLogin }) {
             </p>
           </>
         )}
-      </div>
+      </span>
     </div>
   );
 }

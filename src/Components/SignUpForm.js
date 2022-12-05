@@ -16,7 +16,7 @@ function SignUp({ onLogin }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("/signup", {
+    fetch("http://127.0.0.1:3000/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,6 +31,7 @@ function SignUp({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
+       r.json().then(console.log(r)) 
         r.json().then((user) => onLogin(user));
       } else {
         r.json().then((errors) => setErrors(errors));
