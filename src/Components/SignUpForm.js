@@ -1,94 +1,102 @@
+import "./SignUp.css";
+import React, { useContext } from "react";
+import { FlowerContext } from "./FlowerContext";
 
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-function SignUp({ onLogin }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [bio, setBio] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+// function SignUp({ onLogin }) {
+//   const [username, setUsername] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+//   const [imageUrl, setImageUrl] = useState("");
+//   const [bio, setBio] = useState("");
+//   const [errors, setErrors] = useState([]);
+//   const [isLoading, setIsLoading] = useState(false);
 
+function SignUp() {
+  const {
+    signupData,
+    signupLoading,
+    signupError,
+    handleSignupChange,
+    handleSubmitSignupDetails,
+  } = useContext(FlowerContext);
 
-
-  function handleSubmit(e, {setShowLogin}) {
-    e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
-    fetch("http://127.0.0.1:3000/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
-        image_url: imageUrl,
-        bio,
-      }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-       r.json().then(console.log(r)) 
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((errors) => setErrors(errors));
-      }
-    });
-  }
   return (
-    <form className="mainpage" onSubmit={handleSubmit}>
-      <div className= "signup" >
-        <label htmlFor="username">Username</label>
+    <div className="signup-div">
+      <form className="signup-form" onSubmit={handleSubmitSignupDetails}>
+        <label> Username </label> <br />
         <input
           type="text"
-          id="username"
+          name="username"
           autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          className="signup-input"
+          value={signupData.username}
+          onChange={handleSignupChange}
         />
-        <label htmlFor="password">Password</label>
+        {signupError.length > 0 ? (
+          <p style={{ color: "red", fontSize: "15px" }}>
+            {signupError.find((error) => error.includes("Username"))}!!!
+          </p>
+        ) : null}
+        <br />
+        <label htmlFor="password"> Password </label> <br />
         <input
           type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
           autoComplete="current-password"
+          className="signup-input"
+          value={signupData.password}
+          onChange={handleSignupChange}
         />
-        <label htmlFor="password">Password Confirmation</label>
+        {signupError.length > 0 ? (
+          <p style={{ color: "red", fontSize: "15px" }}>
+            {signupError.find((error) => error.includes("Password"))}!!!
+          </p>
+        ) : null}
+        <br />
+        <label type="password"> Password Confirmation </label> <br />
         <input
           type="password"
-          id="password_confirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
+          name="password_confirmation"
           autoComplete="current-password"
+          className="signup-input"
+          value={signupData.password_confirmation}
+          onChange={handleSignupChange}
         />
-        <label htmlFor="imageUrl">Profile Image</label>
+        {signupError.length > 0 ? (
+          <p style={{ color: "red", fontSize: "15px" }}>
+            {signupError.find((error) => error.includes("confirmation"))}!!!
+          </p>
+        ) : null}
+        <br />
+        <label type="imageUrl"> Profile Image </label> <br />
         <input
           type="text"
           id="imageUrl"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
+          className="signup-input"
+          name="image_url"
+          value={signupData.image_url}
+          onChange={handleSignupChange}
         />
-        <label htmlFor="bio">Bio</label>
+        <label>Bio</label>
         <textarea
           rows="3"
-          id="bio"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
+          autoComplete="off"
+          className="signup-input"
+          type="text"
+          onChange={handleSignupChange}
         />
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
-      <div>
-         {errors.map((err) => (
-          <p key={err}>{err}</p>
-        ))}
-        </div>
-       </div>
-    </form>
+        <br />
+        <button type="submit" id="signup-btn">
+          {signupLoading ? "Loading..." : "Sign Up"}
+        </button>
+        <Link to={"/login"}>
+          <span id="login-section"> Have an account already ? Login </span>
+        </Link>
+      </form>
+    </div>
   );
 }
-
 
 export default SignUp;

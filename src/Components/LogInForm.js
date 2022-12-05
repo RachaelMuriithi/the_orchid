@@ -1,58 +1,66 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { FlowerContext } from "./FlowerContext";
 import "./LogIn.css";
 
-export default function LoginForm({ onLogin }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true);
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
-  }
+export default function LoginForm() {
+  const {
+    loginData,
+    handleLoginChange,
+    handleSubmitLoginDetails,
+    loginError,
+    isLoading,
+  } = useContext(FlowerContext);
 
   return (
-    <form className = "formation" onSubmit={handleSubmit}>
-        <label id="user" htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          autoComplete="off"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br /> <br /> 
-        <label id="pass" htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-         <br /> <br /> 
-        <button id="theebutton" variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
-        </button>
-        {errors.map((err) => (
-          <p key={err}>{err}</p>
-        ))}
-
-    </form>
+    <>
+      <div className="login-div">
+        <div className="login-img">
+          <div className="login-info">
+            <h3> Flower </h3>
+            <p>
+              We 're here to help you find the best restaurant in your area.
+              <br />
+              Whether you 're looking for a place to grab a bite with friends,
+              <br />
+              or a place to celebrate with family, we 've got you covered.
+            </p>
+          </div>
+        </div>
+        <form className="login-form" onSubmit={handleSubmitLoginDetails}>
+          <label htmlFor="username"> Username </label> <br />
+          <input
+            type="text"
+            name="username"
+            className="login-input"
+            autoComplete="off"
+            value={loginData.username}
+            onChange={handleLoginChange}
+          />
+          <br />
+          <label htmlFor="password"> Password </label> <br />
+          <input
+            type="password"
+            name="password"
+            className="login-input"
+            autoComplete="current-password"
+            value={loginData.password}
+            onChange={handleLoginChange}
+          />
+          <br />
+          {loginError.map((error, index) => (
+            <p className="loginError" key={index}>
+              {error}!!
+            </p>
+          ))}
+          <button type="submit" className="login-btn">
+            {isLoading ? " Loading..." : "Login"}
+          </button>
+          <Link>
+            <span id="signup-section"> Don 't have an account? Login</span>
+          </Link>
+        </form>
+      </div>
+    </>
   );
 }
