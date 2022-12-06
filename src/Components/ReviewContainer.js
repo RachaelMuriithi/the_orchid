@@ -9,7 +9,8 @@ function ReviewContainer() {
   const reviewList = reviews.map((review) => (
     <ReviewCard
       key={review.id}
-      reviewStarRating={review.star_rating }
+      reviewId={review.id}
+      reviewTitle={review.title}
       reviewComment={review.comment}
       reviewUser={review.user}
     />
@@ -20,8 +21,7 @@ function ReviewContainer() {
       <button className="review-btn" onClick={handleAddReview}>
         Add Review
       </button>
-
-      {reviewList.length > 0 ? reviewList : <h4>No reviews</h4>}
+      {reviewList}
     </div>
   );
 }

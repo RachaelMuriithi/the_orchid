@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { FlowerContext } from "./FlowerContext";
 import FlowerCard from "./FlowerCard";
-// import "./FlowerContainer.css";
-import FlowerUpdate from "./FlowerUpdate";
+import "./FlowerContainer.css";
+
 
 function FlowerContainer() {
-  const {flowers, flowersError, isPending, trigger } =
+  const {flowers, flowersError, loading} =
     useContext(FlowerContext);
 
   const flowerList = flowers.map ((flower) => (
@@ -26,7 +26,7 @@ function FlowerContainer() {
             </span>
           ))
         : null}
-      {isPending ? <h2>Loading...</h2> : flowerList}
+      {loading ? <h2>Loading...</h2> : flowerList}
     </div>
   );
 }

@@ -1,29 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { FlowerContext } from "./FlowerContext";
-// import "./BookPage.css";
 import ReviewContainer from "./ReviewContainer";
 import ReviewForm from "./ReviewForm";
 
 function FlowerPage() {
-  const { flowerId} =
-    useContext(FlowerContext);
-  const [flower, setFlower] = useState([]);
-  const [flowerReviews, setFlowerReviews] = useState([]);
-  const {  flowerError, trigger } =
+
+  const { flower, flowerError, trigger } =
   useContext(FlowerContext);
-
-
-
-  useEffect(() => {
-    fetch(`/flowers/${flowerId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setFlower(data);
-        setFlowerReviews(data.reviews);
-      })
-      .catch((err) => console.log(err));
-  }, [flowerId]);
-
   return (
     <>
      {flowerError.length > 0
@@ -33,8 +16,8 @@ function FlowerPage() {
             </span>
           ))
         : null}
-      <div className="book-row">
-        <div id="book-image">
+      <div className="flower-row">
+        <div id="flower-image">
           <img src={flower.image_url} alt={flower.name} />
         </div>
         <div id="book-body">

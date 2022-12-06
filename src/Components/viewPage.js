@@ -1,6 +1,7 @@
 import React from "react";
 import "./ViewPage.css";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function ViewPage() {
   return (
@@ -35,7 +36,7 @@ export default function ViewPage() {
         In Ancient Rome, women wore crowns made out of real flowers on special occasions like weddings and birthdays because they thought it would bring good fortune to their marriages and children!
         </p>
         </div>
-        
+        <Footer />
       </div>
     </div>
     

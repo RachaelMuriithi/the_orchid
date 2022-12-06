@@ -1,38 +1,25 @@
-import React from "react";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import React, { useContext } from "react";
 // import "./Review.css";
-function ReviewCard({  reviewStarRating, reviewComment, reviewUser, setFlowerReviews, reviewId}) {
+import { Icon } from "@iconify/react";
+import { FlowerContext } from "./FlowerContext";
 
-  function handleDelete(Id) {
-    fetch(`reviews/id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) =>
-        setFlowerReviews((prevState) =>
-          prevState.filter((review) => review.id !== data.id)
-        )
-      )
-      .catch((error) => console.log(error));
-  }
+function ReviewCard({ reviewTitle, reviewComment, reviewUser, reviewId }) {
+  const { handleDeleteReview } = useContext(FlowerContext);
   return (
     <div className="review-card">
-      <div className="reviewer-info">
-        <h4>{reviewUser.username}</h4>
-        <div className="btn-container">
-            <button onClick={() => handleDelete()} className="">
-              <FontAwesomeIcon icon={faTrash} className="btn-ic2" />
-            </button>
-          </div>
-        <img src={reviewUser.image_url} alt={reviewUser.username} />
+      <div className="review-info">
+        <div className="reviewer-info">
+          <h4>{reviewUser.username}</h4>
+          <img src={reviewUser.image_url} alt={reviewUser.username} />
+        </div>
+        <Icon
+          icon="ic:baseline-delete"
+          className="delete-icon"
+          onClick={() => handleDeleteReview(reviewId)}
+        />
       </div>
-      <p>
-        {[...Array(reviewStarRating)].map((n, index) => (
-          <FontAwesomeIcon icon={faStar} className="fa-star" key={index} />
-        ))}
-        </p>
+
+      <h3> {reviewTitle}</h3>
       <p>{reviewComment}</p>
     </div>
   );

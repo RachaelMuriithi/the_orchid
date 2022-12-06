@@ -39,7 +39,7 @@ function FlowerProvider({ children }) {
       const response = await fetch(`/flowers/${flowerId}`);
       const flower = await response.json();
       if (response.ok) {
-        localStorage.setItem("flowerss", JSON.stringify(flower));
+        localStorage.setItem("flowers", JSON.stringify(flower));
         setFlower(flower);
         setLoading(false);
       } else {
@@ -104,12 +104,29 @@ function FlowerProvider({ children }) {
         comment: "",
       });
       navigate("/flowers/:id");
+      setTrigger(false)
     } else {
       setReviewError(review.errors);
     }
   }
 
   // end of functionality
+  async function handleDeleteReview(reviewId) {
+    console.log(reviewId);
+    const response = await fetch(
+      `/flowers/${flowerId}/reviews/${reviewId}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    console.log(response);
+    if (response.ok) {
+      setReviews((prevReviews) =>
+        prevReviews.filter((review) => review.id !== reviewId)
+      );
+    }
+  }
   function handleFlower(flower) {
     setFlowerId((prevstate) => (prevstate = flower.id));
     navigate(`/flowers/${flower.id}`);
@@ -266,6 +283,7 @@ function FlowerProvider({ children }) {
     reviewError,
     handleReviewChange,
     handleSubmitReview,
+    handleDeleteReview,
   };
 
   return (

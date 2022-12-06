@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import {FlowerContext } from "./FlowerContext";
+import { FlowerContext } from "./FlowerContext";
 // import "./Review.css";
 function ReviewForm() {
   const navigate = useNavigate();
@@ -16,12 +16,12 @@ function ReviewForm() {
   return (
     <div className="popup">
       <form id="review-form" onSubmit={handleSubmitReview}>
-        <label htmlFor="title">Title</label>
+        <label htmlFor="title">Star Rating</label>
         <br />
         <input
           type="text"
           name="title"
-          value={newReview.title}
+          value={newReview.star_rating}
           onChange={handleReviewChange}
         />
         <br />

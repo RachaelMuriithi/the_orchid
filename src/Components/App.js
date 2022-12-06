@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import Header from "./Header";
 import ViewPage from "./viewPage";
 import LoginForm from "./LogInForm";
@@ -8,21 +8,24 @@ import { FlowerProvider } from "./FlowerContext";
 import SignUp from "./SignUpForm";
 import FlowerPage from "./FlowerPage";
 import ReviewContainer from "./ReviewContainer";
+// import { useContext } from "react";
+// import { useEffect } from "react";
+// import { FlowerContext } from "./FlowerContext";
 
 
 
 function App() {
 
-  // const [user, setUser] = useState(null);
+  // const { user, setUser } = useContext(FlowerContext);
 
   // useEffect(() => {
   //   // auto-login
   //   fetch("/me").then((r) => {
   //     if (r.ok) {
-  //       r.json().then((user) => setUser(user));
+  //       r.json().then((loggedUser) => setUser(loggedUser));
   //     }
   //   });
-  // }, []);
+  // }, [setUser]);
 
   // if (!user) return <Login onLogin={setUser} />;
   return (
@@ -42,7 +45,7 @@ function App() {
           />
         </Routes>
       </FlowerProvider>
-      <Footer />
+    
     </div>
      
   );

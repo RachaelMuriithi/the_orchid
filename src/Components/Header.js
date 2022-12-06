@@ -1,10 +1,11 @@
 import React from "react";
-// import Logo from "./Logo";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import FlowerContainer from "./FlowerContainer";
+import { FlowerContext } from "./FlowerContext";
+import { useContext } from "react";
 
-export default function Header() {
+export default function Header({ loggedUser }) {
+  const { handleLogoutClick } = useContext(FlowerContext);
   return (
     <header>
       <div className="header-div"> <Link to={"/"}>
@@ -16,13 +17,18 @@ export default function Header() {
       <Link to={"/reviews"}>
       <h3 id="reviews"> Review Us</h3>
       </Link>
-      <Link to={"/login"}>
-        <button className="header-login">Login</button>
-      </Link>
+      {loggedUser ? (
+        <button className="header-login" onClick={handleLogoutClick}>
+          Log out
+        </button>
+      ) : (
+        <Link to={"/login"}>
+          <button className="header-login">Login</button>
+        </Link>
+      )}
       <Link to={"/signup"}>
         <button className="header-sign">Sign Up</button>
       </Link></div>
-       
     </header>
   );
 }
