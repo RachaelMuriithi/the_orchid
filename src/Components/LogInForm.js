@@ -16,7 +16,7 @@ export default function LoginForm() {
     <>
       <div className="login-div">
         <form className="login-form" onSubmit={handleSubmitLoginDetails}>
-        <img src="https://i.pinimg.com/236x/04/46/0d/04460d864ac54ff4b5d1724c2161b72f.jpg" alt="flower"/>
+        <img src="https://i.pinimg.com/236x/73/12/77/7312776b37828965c055b9ea5a41f993.jpg" alt="flower"/>
           <label htmlFor="username"> Username </label> <br />
           <input
             type="text"
