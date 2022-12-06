@@ -60,7 +60,7 @@ function FlowerProvider({ children }) {
 
   useEffect(() => {
     const payload = async () => {
-      const response = await fetch(`/reviews`);
+      const response = await fetch(`/flowers/${flowerId}/reviews`);
 
       const reviews = await response.json();
       if (response.ok) {
@@ -100,7 +100,7 @@ function FlowerProvider({ children }) {
     if (response.ok) {
       setReviews([...reviews, review]);
       setNewReview({
-        title: "",
+        star_rating: "",
         comment: "",
       });
       navigate("/flowers/:id");
