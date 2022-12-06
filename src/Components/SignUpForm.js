@@ -25,6 +25,7 @@ function SignUp() {
   return (
     <div className="signup-div">
       <form className="signup-form" onSubmit={handleSubmitSignupDetails}>
+        <h1><span>T</span>he Orchid</h1> 
         <div className="css">
           <label> Username </label> <br />
         <input

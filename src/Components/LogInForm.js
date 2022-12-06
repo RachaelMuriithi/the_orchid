@@ -15,19 +15,8 @@ export default function LoginForm() {
   return (
     <>
       <div className="login-div">
-        <div className="login-img">
-          <div className="login-info">
-            <h3> Flower </h3>
-            <p>
-              We 're here to help you find the best restaurant in your area.
-              <br />
-              Whether you 're looking for a place to grab a bite with friends,
-              <br />
-              or a place to celebrate with family, we 've got you covered.
-            </p>
-          </div>
-        </div>
         <form className="login-form" onSubmit={handleSubmitLoginDetails}>
+        <img src="https://i.pinimg.com/564x/1b/b3/66/1bb3667a4c418596a91ef4485e2efb60.jpg" alt="flower"/>
           <label htmlFor="username"> Username </label> <br />
           <input
             type="text"
@@ -56,8 +45,8 @@ export default function LoginForm() {
           <button type="submit" className="login-btn">
             {isLoading ? " Loading..." : "Login"}
           </button>
-          <Link to={"/signup"}>
-          <span id="signup=section"> Don't have an account ? Sign Up </span>
+          <Link id= "link2" to={"/signup"}>
+          <span id="signup=section"> Don't have an account? Sign Up </span>
         </Link>
         </form>
       </div>
