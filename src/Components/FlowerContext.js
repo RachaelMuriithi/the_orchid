@@ -13,6 +13,7 @@ function FlowerProvider({ children }) {
   const [flowerError, setFlowerError] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [reviewsError, setReviewsError] = useState([]);
+  const [onLogin, setOnLogin] = useState(false);
 
   useEffect(() => {
     const payload = async () => {
@@ -38,7 +39,7 @@ function FlowerProvider({ children }) {
       const response = await fetch(`/flowers/${flowerId}`);
       const flower = await response.json();
       if (response.ok) {
-        localStorage.setItem("flowers", JSON.stringify(flower));
+        localStorage.setItem("flowerss", JSON.stringify(flower));
         setFlower(flower);
         setLoading(false);
       } else {
@@ -47,6 +48,7 @@ function FlowerProvider({ children }) {
     };
 
     payload();
+    
   }, [flowerId]);
 
   useEffect(() => {
@@ -58,7 +60,7 @@ function FlowerProvider({ children }) {
 
   useEffect(() => {
     const payload = async () => {
-      const response = await fetch(`/flowers/${flowerId}/reviews`);
+      const response = await fetch(`/reviews`);
 
       const reviews = await response.json();
       if (response.ok) {
@@ -69,7 +71,7 @@ function FlowerProvider({ children }) {
     };
 
     payload();
-  }, [flowerId]);
+  }, []);
 
   // Create functionality for adding a new review
   const [newReview, setNewReview] = useState({
@@ -98,9 +100,10 @@ function FlowerProvider({ children }) {
     if (response.ok) {
       setReviews([...reviews, review]);
       setNewReview({
-        star_rating: "",
+        title: "",
         comment: "",
       });
+      navigate("/flowers/:id");
     } else {
       setReviewError(review.errors);
     }
@@ -112,13 +115,13 @@ function FlowerProvider({ children }) {
     navigate(`/flowers/${flower.id}`);
   }
 
+
   // start of sign up functionality
   const [signupData, setSignupData] = useState({
     username: "",
     password: "",
     image_url: "",
     password_confirmation: "",
-    bio: "",
   });
 
   const [signupError, setSignupError] = useState([]);
@@ -141,7 +144,8 @@ function FlowerProvider({ children }) {
 
     const userData = await response.json();
     if (response.ok) {
-      setSignupData(userData);
+      setUser(userData);
+      setOnLogin(true);
       setSignupError([]);
       setSignupLoading(false);
       navigate("/");
@@ -150,7 +154,6 @@ function FlowerProvider({ children }) {
         password: "",
         image_url: "",
         password_confirmation: "",
-        bio: "",
       });
     } else {
       setSignupError(userData.errors);
@@ -164,7 +167,8 @@ function FlowerProvider({ children }) {
     username: "",
     password: "",
   });
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  const [loginStatus, setLoginStatus] = useState(false);
   const [loginError, setLoginError] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -191,6 +195,7 @@ function FlowerProvider({ children }) {
     if (response.ok) {
       setIsLoading(false);
       setUser(userData);
+      setLoginStatus(true);
       setLoginError([]);
       setLoginData({
         username: "",
@@ -202,11 +207,14 @@ function FlowerProvider({ children }) {
     }
   }
   // End of Login functionality
-   // Logout functionality
-   function handleLogoutClick() {
+
+  // Logout functionality
+  function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
+        setLoginStatus(false);
+        // navigate("/login");
       }
     });
   }
@@ -224,6 +232,7 @@ function FlowerProvider({ children }) {
     flower,
     flowerError,
     handleFlower,
+   
 
     // State and functions for login
     handleLogoutClick,
@@ -232,7 +241,11 @@ function FlowerProvider({ children }) {
     loginError,
     loginData,
     isLoading,
+    loginStatus,
 
+    onLogin,
+    user,
+    setUser,
     // State and functions for sign up
     handleSignupChange,
     handleSubmitSignupDetails,
@@ -244,12 +257,13 @@ function FlowerProvider({ children }) {
     reviews,
     reviewsError,
 
-  
+    //Add functionality for getting and setting book
     trigger,
     setTrigger,
     handleAddReview,
 
     newReview,
+    reviewError,
     handleReviewChange,
     handleSubmitReview,
   };

@@ -1,19 +1,40 @@
 import React from "react";
 import { useContext } from "react";
-import { FlowerContext } from "./FlowerContext";
+import { useNavigate } from "react-router-dom";
+import {FlowerContext } from "./FlowerContext";
 // import "./Review.css";
 function ReviewForm() {
-  const { setTrigger } = useContext(FlowerContext);
+  const navigate = useNavigate();
+  const {
+    setTrigger,
+    handleReviewChange,
+    newReview,
+    handleSubmitReview,
+    reviewError,
+  } = useContext(FlowerContext);
+
   return (
     <div className="popup">
-      <form id="review-form">
-        <label htmlFor="rating">Star Rating</label>
+      <form id="review-form" onSubmit={handleSubmitReview}>
+        <label htmlFor="title">Title</label>
         <br />
-        <input type="integer" name="star_rating" />
+        <input
+          type="text"
+          name="title"
+          value={newReview.title}
+          onChange={handleReviewChange}
+        />
         <br />
-        <label htmlFor="comment">Comment</label>
+        <label htmlFor="comment">Description</label>
         <br />
-        <textarea cols="50" rows="4" className="text-area"></textarea>
+        <textarea
+          cols="50"
+          rows="4"
+          className="text-area"
+          name="comment"
+          value={newReview.comment}
+          onChange={handleReviewChange}
+        ></textarea>
         <br />
         <div className="action-btns">
           <button type="submit" className="review-btn-1">
@@ -23,11 +44,16 @@ function ReviewForm() {
           <button
             type="button"
             className="review-btn-1"
-            onClick={() =>setTrigger((prevState) => !prevState)}
+            onClick={() => setTrigger((prevState) => !prevState)}
           >
             Cancel
           </button>
         </div>
+        {reviewError.length > 0
+          ? reviewError.find((review) => review.includes("Review not found"))
+            ? navigate("/login")
+            : null
+          : null}
       </form>
     </div>
   );

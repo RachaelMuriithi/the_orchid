@@ -37,7 +37,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/flowers/:id" element={<FlowerPage />} />
           <Route
-            path="/flowers/:id"
+            path="/reviews"
             element={<ReviewContainer />}
           />
         </Routes>

@@ -56,9 +56,9 @@ export default function LoginForm() {
           <button type="submit" className="login-btn">
             {isLoading ? " Loading..." : "Login"}
           </button>
-          <Link>
-            <span id="signup-section"> Don 't have an account? Signup</span>
-          </Link>
+          <Link to={"/signup"}>
+          <span id="signup=section"> Don't have an account ? Sign Up </span>
+        </Link>
         </form>
       </div>
     </>

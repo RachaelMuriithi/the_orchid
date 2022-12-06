@@ -2,6 +2,7 @@ import React from "react";
 // import Logo from "./Logo";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import FlowerContainer from "./FlowerContainer";
 
 export default function Header() {
   return (

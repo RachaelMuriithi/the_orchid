@@ -1,6 +1,6 @@
 import React from "react";
 import "./ViewPage.css";
-import FlowerContainer from "./FlowerContainer";
+import { Link } from "react-router-dom";
 
 export default function ViewPage() {
   return (
@@ -16,7 +16,11 @@ export default function ViewPage() {
         Learn about flowers in our online museum and  garden. See the beautiful diversity of flowers and understand how important they are in our ecosystem.
         </p>
 
-        <button className="view-all">Explore More</button>
+        <button className="view-all">
+        <Link to={"/flowers"}>
+          <span> Explore More </span>
+        </Link>
+          </button>
       </div>
       <div className="fun_fact">
         <div className="funfact">
