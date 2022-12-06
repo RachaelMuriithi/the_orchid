@@ -8,7 +8,7 @@ function FlowerProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [flowers, setFlowers] = useState([]);
   const [flowersError, setFlowersError] = useState([]);
-  const [flowerId, setFlowerId] = useState(1);
+  // const [flowerId, setFlowerId] = useState(1);
   const [flower, setFlower] = useState({});
   const [flowerError, setFlowerError] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -32,6 +32,10 @@ function FlowerProvider({ children }) {
     // Function call
     payload();
   }, []);
+
+  const localIdJson = localStorage.getItem("flowerId");
+  const localId = localIdJson ? JSON.parse(localIdJson) : [];
+  const [flowerId, setFlowerId] = useState(localId);
 
   useEffect(() => {
     const payload = async () => {
@@ -71,7 +75,7 @@ function FlowerProvider({ children }) {
     };
 
     payload();
-  }, []);
+  }, [flowerId]);
 
   // Create functionality for adding a new review
   const [newReview, setNewReview] = useState({

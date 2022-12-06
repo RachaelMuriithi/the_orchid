@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-// import "./Review.css";
+import "./Review.css";
 import { Icon } from "@iconify/react";
 import { FlowerContext } from "./FlowerContext";
 
-function ReviewCard({ reviewTitle, reviewComment, reviewUser, reviewId }) {
+function ReviewCard({ reviewName, reviewComment, reviewUser, reviewId, starRating }) {
   const { handleDeleteReview } = useContext(FlowerContext);
   return (
     <div className="review-card">
@@ -19,7 +19,8 @@ function ReviewCard({ reviewTitle, reviewComment, reviewUser, reviewId }) {
         />
       </div>
 
-      <h3> {reviewTitle}</h3>
+      <h3> {reviewName}</h3>
+      <p>{starRating}</p>
       <p>{reviewComment}</p>
     </div>
   );

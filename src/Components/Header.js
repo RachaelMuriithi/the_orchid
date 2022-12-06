@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FlowerContext } from "./FlowerContext";
 import { useContext } from "react";
 
+
 export default function Header({ loggedUser }) {
   const { handleLogoutClick } = useContext(FlowerContext);
   return (

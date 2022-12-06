@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FlowerContext } from "./FlowerContext";
 import ReviewCard from "./ReviewCard";
-// import "./Review.css";
+import "./Review.css";
 
 function ReviewContainer() {
   const { reviews, handleAddReview } = useContext(FlowerContext);
@@ -10,7 +10,7 @@ function ReviewContainer() {
     <ReviewCard
       key={review.id}
       reviewId={review.id}
-      reviewTitle={review.title}
+      reviewName={review.name}
       reviewComment={review.comment}
       reviewUser={review.user}
     />
