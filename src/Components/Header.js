@@ -22,7 +22,7 @@ export default function Header() {
       <Link to={"/signup"}>
         <button className="header-sign">Sign Up</button>
       </Link></div>
-      
+       
     </header>
   );
 }

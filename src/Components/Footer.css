@@ -5,6 +5,7 @@ height: 94.01px;
 margin-top: 1450px;
 background: #b8aa8e;
 transform: matrix(1, 0, 0, 1, 0, 0);
+margin-top: 77%;
 }
 .footer {
     position: abosute;
@@ -24,32 +25,32 @@ font-weight: 600;
 font-size: 20px;
 line-height: 30px;
 color: #FFFFFF;
-margin-top: 80px;
+margin-top: 60px;
 }
 .social-icon1 {
 position: absolute;
-margin-left: 77.72%;
+margin-left: 82.72%;
 margin-right: 20.97%;
 margin-top: 50px;
-background: #b8aa8e;
+background: white;
 transform: matrix(1, 0, 0, 1, 0, 0);
 font-size: 20px;
 }
 .social-icon2 {
     position: absolute; 
-    margin-left: 75%;
+    margin-left: 85%;
     margin-right: 20.97%;
     margin-top: 50px;
-    background: #b8aa8e;
+    background: white;
     transform: matrix(1, 0, 0, 1, 0, 0);
     font-size: 20px;
     }
     .social-icon3 {
         position: absolute; 
-        margin-left: 72%;
+        margin-left: 80%;
         margin-right: 20.97%;
         margin-top: 50px;
-        background: #b8aa8e;
+        background: white;
         transform: matrix(1, 0, 0, 1, 0, 0);
         font-size: 20px;
         }

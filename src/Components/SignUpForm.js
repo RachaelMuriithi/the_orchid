@@ -25,7 +25,8 @@ function SignUp() {
   return (
     <div className="signup-div">
       <form className="signup-form" onSubmit={handleSubmitSignupDetails}>
-        <label> Username </label> <br />
+        <div className="css">
+          <label> Username </label> <br />
         <input
           type="text"
           name="username"
@@ -78,7 +79,7 @@ function SignUp() {
           name="image_url"
           value={signupData.image_url}
           onChange={handleSignupChange}
-        />
+        /> <br/>
         <label>Bio</label>
         <textarea
           rows="3"
@@ -91,9 +92,10 @@ function SignUp() {
         <button type="submit" id="signup-btn">
           {signupLoading ? "Loading..." : "Sign Up"}
         </button>
-        <Link to={"/login"}>
-          <span id="login-section"> Have an account already ? Login </span>
-        </Link>
+        <Link id="link" to={"/login"}>
+          <span id="login-section"> Have an account already?  Login </span>
+        </Link></div>
+        
       </form>
     </div>
   );
