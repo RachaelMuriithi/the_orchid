@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { FlowerContext } from "./FlowerContext";
 import ReviewContainer from "./ReviewContainer";
 import ReviewForm from "./ReviewForm";
+import "./FlowerPage.css";
 
 function FlowerPage() {
 
