@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { FlowerContext } from "./FlowerContext";
 import ReviewCard from "./ReviewCard";
 import "./Review.css";
-
 function ReviewContainer() {
   const { reviews, handleAddReview } = useContext(FlowerContext);
 
@@ -11,11 +10,7 @@ function ReviewContainer() {
       key={review.id}
       reviewId={review.id}
       reviewName={review.name}
-      reviewStar= { review.
-        {[...Array(starRating)].map((n, index) => (
-          <FontAwesomeIcon icon={faStar} className="fa-star" key={index} />
-        ))}
-      }
+      reviewStar= { review.starRating}
       reviewComment={review.comment}
       reviewUser={review.user}
     />

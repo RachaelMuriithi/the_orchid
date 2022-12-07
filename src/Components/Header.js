@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { FlowerContext } from "./FlowerContext";
@@ -6,17 +6,18 @@ import { useContext } from "react";
 
 
 export default function Header({ loggedUser }) {
+  const [header, setHeader] = useState(false);
   const { handleLogoutClick } = useContext(FlowerContext);
+
   return (
-    <header>
+    <header className={header ? "header active" : "header"}>
       <div className="header-div"> <Link to={"/"}>
         <h3 id="home"> Home</h3>
       </Link>
       <Link to={"/flowers"}>
       <h3 id="collection"> Our Collection</h3>
       </Link>
-      <Link to={"/reviews"}>
-      <h3 id="reviews"> Review Us</h3>
+      <Link to={"/flowers/:id"}>
       </Link>
       {loggedUser ? (
         <button className="header-login" onClick={handleLogoutClick}>

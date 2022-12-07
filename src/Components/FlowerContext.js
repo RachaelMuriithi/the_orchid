@@ -33,6 +33,7 @@ function FlowerProvider({ children }) {
     payload();
   }, []);
 
+
   const localIdJson = localStorage.getItem("flowerId");
   const localId = localIdJson ? JSON.parse(localIdJson) : [];
   const [flowerId, setFlowerId] = useState(localId);
@@ -79,7 +80,7 @@ function FlowerProvider({ children }) {
 
   // Create functionality for adding a new review
   const [newReview, setNewReview] = useState({
-    star_rating: "",
+    star_rating: "4",
     comment: "",
   });
 
@@ -113,7 +114,6 @@ function FlowerProvider({ children }) {
       setReviewError(review.errors);
     }
   }
-
   // end of functionality
   async function handleDeleteReview(reviewId) {
     console.log(reviewId);
