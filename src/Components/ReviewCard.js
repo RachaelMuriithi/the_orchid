@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import "./Review.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Icon } from "@iconify/react";
 import { FlowerContext } from "./FlowerContext";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function ReviewCard({ reviewName, reviewComment, reviewUser, reviewId, starRating }) {
   const { handleDeleteReview } = useContext(FlowerContext);
@@ -20,7 +22,9 @@ function ReviewCard({ reviewName, reviewComment, reviewUser, reviewId, starRatin
       </div>
 
       <h3> {reviewName}</h3>
-      <p>{starRating}</p>
+      <p> {[...Array(starRating)].map((n, index) => (
+          <FontAwesomeIcon icon={faStar} className="fa-star" key={index} />
+        ))}</p>
       <p>{reviewComment}</p>
     </div>
   );

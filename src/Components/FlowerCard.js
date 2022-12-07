@@ -10,7 +10,7 @@ function FlowerCard({ flowerImage, flowerName,flowerDescription, flower }) {
   return (
     <div className="flower-card">
       <div className="flowers">
-      <div className="flower-img">
+      <div className="flower-img" >
         <img src={flowerImage} alt={flowerName} 
         />
       </div>

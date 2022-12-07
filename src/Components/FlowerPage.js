@@ -26,8 +26,11 @@ function FlowerPage() {
           <p> {flower.description} </p>
         </div>
       </div>
+      <div className="review">
       <ReviewContainer />
         {trigger ? <ReviewForm /> : null}
+      </div>
+     
     </>
   );
 }

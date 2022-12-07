@@ -16,12 +16,17 @@ function ReviewForm() {
   return (
     <div className="popup">
       <form id="review-form" onSubmit={handleSubmitReview}>
-        <label htmlFor="title">Star Rating</label>
+        <label>Star Rating</label>
         <br />
         <input
-          type="text"
-          name="title"
-          value={newReview.star_rating}
+          min="1"
+          max="5"
+          className="star-rating"
+          type="number"
+          id="star_rating"
+          aria-describedby="number"
+          placeholder="Enter your star rating (1-5)"
+          // value={newReview.star_rating}
           onChange={handleReviewChange}
         />
         <br />

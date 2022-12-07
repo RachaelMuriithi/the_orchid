@@ -11,6 +11,11 @@ function ReviewContainer() {
       key={review.id}
       reviewId={review.id}
       reviewName={review.name}
+      reviewStar= { review.
+        {[...Array(starRating)].map((n, index) => (
+          <FontAwesomeIcon icon={faStar} className="fa-star" key={index} />
+        ))}
+      }
       reviewComment={review.comment}
       reviewUser={review.user}
     />
