@@ -18,7 +18,7 @@ function FlowerProvider({ children }) {
   useEffect(() => {
     const payload = async () => {
       setLoading(true);
-      const response = await fetch("/flowers");
+      const response = await fetch("https://theorchid-production.up.railway.app/flowers");
 
       const flowers = await response.json();
       if (response.ok) {
@@ -41,7 +41,7 @@ function FlowerProvider({ children }) {
   useEffect(() => {
     const payload = async () => {
       setLoading(true);
-      const response = await fetch(`/flowers/${flowerId}`);
+      const response = await fetch(`https://theorchid-production.up.railway.app/flowers/${flowerId}`);
       const flower = await response.json();
       if (response.ok) {
         localStorage.setItem("flowers", JSON.stringify(flower));
@@ -65,7 +65,7 @@ function FlowerProvider({ children }) {
 
   useEffect(() => {
     const payload = async () => {
-      const response = await fetch(`/flowers/${flowerId}/reviews`);
+      const response = await fetch(`https://theorchid-production.up.railway.app/flowers/${flowerId}/reviews`);
 
       const reviews = await response.json();
       if (response.ok) {
@@ -95,7 +95,7 @@ function FlowerProvider({ children }) {
   async function handleSubmitReview(event) {
     event.preventDefault();
 
-    const response = await fetch(`/flowers/${flowerId}/reviews`, {
+    const response = await fetch(`https:/the-orchid-production.up.railway.app/flowers/${flowerId}/reviews`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newReview),
@@ -118,7 +118,7 @@ function FlowerProvider({ children }) {
   async function handleDeleteReview(reviewId) {
     console.log(reviewId);
     const response = await fetch(
-      `/flowers/${flowerId}/reviews/${reviewId}`,
+      `https://theorchid-production.up.railway.app/flowers/${flowerId}/reviews/${reviewId}`,
       {
         method: "DELETE",
       }
@@ -157,7 +157,7 @@ function FlowerProvider({ children }) {
   async function handleSubmitSignupDetails(event) {
     event.preventDefault();
     setSignupLoading(true);
-    const response = await fetch("/signup", {
+    const response = await fetch("https://theorchid-production.up.railway.app/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signupData),
@@ -205,7 +205,7 @@ function FlowerProvider({ children }) {
   async function handleSubmitLoginDetails(event) {
     event.preventDefault();
     setIsLoading(true);
-    const response = await fetch("/login", {
+    const response = await fetch("https://the-orchid-production.up.railway.app/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(loginData),
@@ -231,7 +231,7 @@ function FlowerProvider({ children }) {
 
   // Logout functionality
   function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+    fetch("https://theorchid-production.up.railway.app/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
         setLoginStatus(false);
