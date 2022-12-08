@@ -21,6 +21,7 @@ function ReviewForm() {
         <input
           min="1"
           max="5"
+          name="star_rating"
           className="star-rating"
           type="number"
           id="star_rating"
