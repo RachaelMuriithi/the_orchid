@@ -107,6 +107,7 @@
     justify-content: space-between;
   }
   .delete-icon {
-    font-size: 30;
-    height: 20%;
+    font-size: 25px;
+    color: whitesmoke;
+    margin-left: 10%;
   }

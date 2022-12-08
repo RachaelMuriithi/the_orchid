@@ -10,7 +10,7 @@ function ReviewContainer() {
       key={review.id}
       reviewId={review.id}
       reviewName={review.name}
-      reviewStar= { review.starRating}
+      reviewStar= { review.star_rating}
       reviewComment={review.comment}
       reviewUser={review.user}
     />

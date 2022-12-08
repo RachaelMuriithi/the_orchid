@@ -26,7 +26,7 @@ function ReviewForm() {
           id="star_rating"
           aria-describedby="number"
           placeholder="Enter your star rating (1-5)"
-          value={newReview.star_rating}
+          // value={newReview.star_rating}
           onChange={handleReviewChange}
         />
         <br />
