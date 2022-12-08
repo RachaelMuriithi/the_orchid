@@ -27,9 +27,15 @@ export default function Header({ loggedUser }) {
           <button className="header-login">Login</button>
         </Link>
       )}
-      <Link to={"/signup"}>
+        <Link to={"/signup"}>
         <button className="header-sign">Sign Up</button>
-      </Link></div>
+      </Link>
+      {loggedUser ? (
+        <button className="user-profile">
+          {loggedUser.username.charAt(0)}
+        </button>
+      ) : null}
+      </div>
     </header>
   );
 }
