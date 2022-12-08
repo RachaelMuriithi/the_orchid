@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/me")
+    fetch("https://theorchid-production.up.railway.app//me")
       .then((r) => {
       if (r.ok) {
         r.json().then((loggedUser) => setUser(loggedUser));

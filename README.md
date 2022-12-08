@@ -21,7 +21,18 @@ To run this project, one must have either of the following;
     * Run __"npm install"__ to install the project dependencies.
     * Run __"npm install react-router-dom@6.4.3"__ to install a compatible version of react-router-dom.
     * Run __"npm start"__ command in the terminal to get the React App running.
-
+  
+  ### Objective of the project
+ * A user can signup
+ * Log in a User if they already have an account
+ * A user can view a specific flowers details on clicking it.
+ * A user is able to review a specific flower if they are logged in.
+ * User are logged out when they click the log out button
+ ### Project Features
+  *Home Page - First page that the user sees
+  *Login Page - Logs in user to use the museum
+  *Sign Up page - Registers user to use the application
+   *Flower page- Displays a single flower.
 ### Future Updates
 1. Add update functionality to the Reviews card to allow users to update their reviews on particular flowers.
 2. Develop a mobile application.
