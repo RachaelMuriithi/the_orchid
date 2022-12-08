@@ -106,3 +106,7 @@
     display: flex;
     justify-content: space-between;
   }
+  .delete-icon {
+    font-size: 30;
+    height: 20%;
+  }
