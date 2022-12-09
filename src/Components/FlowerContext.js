@@ -41,10 +41,9 @@ function FlowerProvider({ children }) {
   useEffect(() => {
     const payload = async () => {
       setLoading(true);
-      const response = await fetch(`/${flowerId}`);
+      const response = await fetch(`/flowers/${flowerId}`);
       const flower = await response.json();
       if (response.ok) {
-        localStorage.setItem("flowers", JSON.stringify(flower));
         setFlower(flower);
         setLoading(false);
       } else {
@@ -65,7 +64,8 @@ function FlowerProvider({ children }) {
 
   useEffect(() => {
     const payload = async () => {
-      const response = await fetch(`/${flowerId}/reviews`);
+      const response = await fetch(`/flowers/${flowerId}/reviews`);
+
       const reviews = await response.json();
       if (response.ok) {
         setReviews(reviews);
@@ -94,7 +94,7 @@ function FlowerProvider({ children }) {
   async function handleSubmitReview(event) {
     event.preventDefault();
 
-    const response = await fetch(`/${flowerId}/reviews`, {
+    const response = await fetch(`/flowers/${flowerId}/reviews`, {
       
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -118,7 +118,7 @@ function FlowerProvider({ children }) {
   async function handleDeleteReview(reviewId) {
     console.log(reviewId);
     const response = await fetch(
-      `/${flowerId}/reviews/${reviewId}`,
+      `/flowers/${flowerId}/reviews/${reviewId}`,
       {
         
         method: "DELETE",
