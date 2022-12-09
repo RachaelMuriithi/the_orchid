@@ -27,6 +27,7 @@ To run this project, one must have either of the following;
  * Log in a User if they already have an account
  * A user can view a specific flowers details on clicking it.
  * A user is able to review a specific flower if they are logged in.
+ * A user can delete a review they created.
  * User are logged out when they click the log out button
  ### Project Features
   *Home Page - First page that the user sees
